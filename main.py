@@ -64,12 +64,20 @@ def main():
             enemy_spawn_timer = 0
 
         # Update enemies
-        for enemy in enemies:
-            enemy.move()
+        # Update enemies
+        for enemy in enemies[:]:  # iterate over a copy to allow removal
+            if enemy.alive:
+                enemy.move()
+            else:
+                enemies.remove(enemy)
+
 
         # Update towers (for cooldown, etc.)
         for tower in towers:
-            tower.update()
+            tower.update(enemies)
+
+
+
 
         draw_window()
 
