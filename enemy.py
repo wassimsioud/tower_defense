@@ -4,8 +4,8 @@ from path import PATH
 
 class Enemy:
     def __init__(self):
-        self.image = pygame.Surface((20, 30))
-        self.image.fill((255, 0, 0))  # Red square
+        self.image = pygame.image.load("assets/images/monster.png").convert_alpha()  # Load your monster image
+        self.image = pygame.transform.scale(self.image, (90, 90))  # Optional: scale the image
         self.rect = self.image.get_rect()
         self.path = PATH
         self.current_point = 0
